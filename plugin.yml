@@ -1,0 +1,24 @@
+name: OvercastMimic
+main: me.Barnyard_Owl.OvercastMimic.OvercastMimic
+version: 0.3
+description: >
+             A mimic of the Overcast Network plugin.
+commands:
+    start:
+        description:
+            Start the game (OPs only)
+    test:
+        description:
+            Test command, doesn't normally do anything.
+    join:
+        description:
+            Join a team.
+    g:
+        description:
+            Use global chat.
+    cancel:
+        description:
+            Cancel the game.
+    tp:
+        description:
+            Teleport to a player. (Outside of game only)
