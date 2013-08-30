@@ -77,7 +77,7 @@ public class CommandListener implements CommandExecutor {
 		if (command.equalsIgnoreCase("test") && player.isOp()) {
 			Scrimmage.gameActive = true;
 		}
-		if (command.equalsIgnoreCase("g")) {
+		if (command.equalsIgnoreCase("g") && args.length > 0) {
 			String sent = "";
 			for (String arg : args) {
 				sent += (arg + " ");
