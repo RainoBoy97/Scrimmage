@@ -85,37 +85,6 @@ public class CommandListener implements CommandExecutor {
 			sent = sent.trim();
 			String message = "";
 			String chat = Scrimmage.team(player);
-			/*
-			 * if (player.getDisplayName().equals("Barnyard_Owl")) { if (chat ==
-			 * "spec") { message = ChatColor.RED + "�?�" + ChatColor.AQUA +
-			 * " [G] " + ChatColor.RESET + player.getDisplayName() + ": " +
-			 * sent; } if (chat == "blue") { message = ChatColor.RED + "�?�" +
-			 * ChatColor.BLUE + " [G] " + ChatColor.RESET +
-			 * player.getDisplayName() + ": " + sent; } if (chat == "red") {
-			 * message = ChatColor.RED + "�?�" + ChatColor.RED + " [G] " +
-			 * ChatColor.RESET + player.getDisplayName() + ": " + sent; } } else
-			 */
-			if (player.getDisplayName().equals("Barnyard_Owl")) {
-				if (chat == "spec") {
-					message = ChatColor.AQUA + "➜ " + ChatColor.DARK_PURPLE + "[DEV]" + ChatColor.AQUA + " [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
-				}
-				if (chat == Var.teamDisplayName) {
-					message = Var.teamTechnicalColor + "➜ " + ChatColor.DARK_PURPLE + "[DEV]" + Var.teamTechnicalColor + " [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
-				}
-				if (chat == Var.enemyTeamDisplayName) {
-					message = Var.enemyTeamTechnicalColor + "➜ " + ChatColor.DARK_PURPLE + "[DEV]" + Var.enemyTeamTechnicalColor + " [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
-				}
-			} else {
-				if (chat == "spec") {
-					message = ChatColor.AQUA + "➜ [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
-				}
-				if (chat == Var.teamDisplayName) {
-					message = ChatColor.BLUE + "➜ [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
-				}
-				if (chat == Var.enemyTeamDisplayName) {
-					message = ChatColor.RED + "➜ [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
-				}
-			}
 			Bukkit.broadcastMessage(message);
 		}
 		if (command.equalsIgnoreCase("join")) {
