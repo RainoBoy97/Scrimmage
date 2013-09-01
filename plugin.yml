@@ -1,24 +1,24 @@
 name: OvercastMimic
-main: me.Barnyard_Owl.OvercastMimic.OvercastMimic
-version: 0.3
+main: me.Rainoboy97.Scrimmage
+version: 0.4
 description: >
-             A mimic of the Overcast Network plugin.
+             A plugin to quickly enable team's to practice/scrimmage with others.
 commands:
     start:
         description:
-            Start the game (OPs only)
+            Start the countdown for a match
     test:
         description:
-            Test command, doesn't normally do anything.
+            Test command, ignore.
     join:
         description:
             Join a team.
     g:
         description:
-            Use global chat.
+            Use global chat, everyone can hear you.
     cancel:
         description:
-            Cancel the game.
+            Cancel the countdown for a match.
     tp:
         description:
-            Teleport to a player. (Outside of game only)
+            Teleport to a player in observers.
