@@ -1,8 +1,7 @@
-name: OvercastMimic
-main: me.rainoboy97.scrimmage
+name: Scrimmage
+main: me.rainoboy97.scrimmage.Scrimmage
 version: 0.4
-description: >
-             A plugin to quickly enable team's to practice/scrimmage with others.
+description: Scrimmage plugin for bukkit
 commands:
     start:
         description:
