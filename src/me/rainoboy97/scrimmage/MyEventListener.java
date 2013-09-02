@@ -891,25 +891,25 @@ public class MyEventListener implements Listener {
 		 * VariableHandler.enemyTeamTechnicalColor + " [T] " + ChatColor.RESET +
 		 * player.getDisplayName() + ": " + event.getMessage(); } } else
 		 */
-		if (player.getDisplayName().equals("Barnyard_Owl")) {
+		if (player.isOp()) {
 			if (chat == "spec") {
-				message = ChatColor.AQUA + "➜ " + ChatColor.DARK_PURPLE + "[DEV]" + ChatColor.AQUA + " [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
+				message = ChatColor.AQUA + "[Team] " + ChatColor.DARK_AQUA + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 			}
 			if (chat == Var.teamDisplayName) {
-				message = Var.teamTechnicalColor + "➜ " + ChatColor.DARK_PURPLE + "[DEV]" + Var.teamTechnicalColor + " [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
+				message = Var.teamTechnicalColor + "[Team] " + ChatColor.DARK_AQUA + "*" + Var.teamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 			}
 			if (chat == Var.enemyTeamDisplayName) {
-				message = Var.enemyTeamTechnicalColor + "➜ " + ChatColor.DARK_PURPLE + "[DEV]" + Var.enemyTeamTechnicalColor + " [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
+				message = Var.enemyTeamTechnicalColor + "[Team] " + ChatColor.DARK_AQUA + "*" + Var.enemyTeamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 			}
 		} else {
 			if (chat == "spec") {
-				message = ChatColor.AQUA + "➜ [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
+				message = ChatColor.AQUA + "[Team] " + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 			}
 			if (chat == Var.teamDisplayName) {
-				message = Var.teamTechnicalColor + "➜ [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
+				message = Var.teamTechnicalColor + "[Team] " + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 			}
 			if (chat == Var.enemyTeamDisplayName) {
-				message = Var.enemyTeamTechnicalColor + "➜ [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
+				message = Var.enemyTeamTechnicalColor + "[Team] " + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 			}
 		}
 		if (chat == "spec") {
