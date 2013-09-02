@@ -59,8 +59,6 @@ public class CommandListener implements CommandExecutor {
 				Scrimmage.gameActive = false;
 				for (Player i : Bukkit.getOnlinePlayers()) {
 					i.setGameMode(GameMode.CREATIVE);
-					i.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 1000000, 1));
-					i.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 1000000, 1));
 					i.getInventory().clear();
 					i.getInventory().setHelmet(null);
 					i.getInventory().setChestplate(null);
