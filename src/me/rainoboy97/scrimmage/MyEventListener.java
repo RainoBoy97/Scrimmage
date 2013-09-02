@@ -106,7 +106,7 @@ public class MyEventListener implements Listener {
 			}
 		}
 		Bukkit.broadcastMessage(ChatColor.AQUA + "Player " + ChatColor.DARK_AQUA + displayName + ChatColor.AQUA + " has joined the server.");
-		player.sendMessage(ChatColor.GRAY + "Welcome!! This server is currently running Scrimmage, (Developed by Barnyard_Owl, RainoBoy97, hdt80bro, and ShinyDialga45) with the map " + Var.mapName + ". (Made by " + Var.mapMakers + ") YAML Config courtesy of " + Var.configMaker + ".");
+		player.sendMessage(ChatColor.GRAY + "Welcome!! This server is currently running Scrimmage with the map " + Var.mapName + ". (Made by " + Var.mapMakers + ") and config courtesy of " + Var.configMaker + ".");
 
 	}
 
