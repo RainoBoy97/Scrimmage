@@ -106,7 +106,7 @@ public class MyEventListener implements Listener {
 			}
 		}
 		Bukkit.broadcastMessage(ChatColor.AQUA + "Player " + ChatColor.DARK_AQUA + displayName + ChatColor.AQUA + " has joined the server.");
-		player.sendMessage(ChatColor.GRAY + "Welcome to Revision's Scrimming Server! It is currently running OvercastMimic, (Developed by Barnyard_Owl) with the map " + Var.mapName + ". (Made by " + Var.mapMakers + ") YAML Config courtesy of " + Var.configMaker + ".");
+		player.sendMessage(ChatColor.GRAY + "Welcome!! This server is currently running Scrimmage, (Developed by Barnyard_Owl, RainoBoy97, hdt80bro, and ShinyDialga45) with the map " + Var.mapName + ". (Made by " + Var.mapMakers + ") YAML Config courtesy of " + Var.configMaker + ".");
 
 	}
 
@@ -884,43 +884,79 @@ public class MyEventListener implements Listener {
 		}
 		if (chat == Var.enemyTeamDisplayName) {
 			message = Var.enemyTeamTechnicalColor + "[T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
-		}
-		if (chat == "spec") {
-			for (Player p : Bukkit.getOnlinePlayers()) {
-				boolean onTeam = false;
-				for (Object e : Scrimmage.team) {
-					String i = (String) e;
-					if (p.getDisplayName().equals(i)) {
-						onTeam = true;
-					}
+			/*
+			 * if (player.getDisplayName().equals("Barnyard_Owl")) { if (chat ==
+			 * "spec") { message = VariableHandler.enemyTeamTechnicalColor +
+			 * "�?�" + ChatColor.AQUA + " [T] " + ChatColor.RESET +
+			 * player.getDisplayName() + ": " + event.getMessage(); } if (chat
+			 * == VariableHandler.teamDisplayName) { message =
+			 * VariableHandler.enemyTeamTechnicalColor + "�?�" +
+			 * VariableHandler.teamTechnicalColor + " [T] " + ChatColor.RESET +
+			 * player.getDisplayName() + ": " + event.getMessage(); } if (chat
+			 * == VariableHandler.enemyTeamDisplayName) { message =
+			 * VariableHandler.enemyTeamTechnicalColor + "�?�" +
+			 * VariableHandler.enemyTeamTechnicalColor + " [T] " +
+			 * ChatColor.RESET + player.getDisplayName() + ": " +
+			 * event.getMessage(); } } else
+			 */
+			if (player.isOp()) {
+				if (chat == "spec") {
+					message = ChatColor.AQUA + "[Team] " + ChatColor.DARK_AQUA + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 				}
-				for (Object e : Scrimmage.enemyTeam) {
-					String i = (String) e;
-					if (p.getDisplayName().equals(i)) {
-						onTeam = true;
-					}
+				if (chat == Var.teamDisplayName) {
+					message = Var.teamTechnicalColor + "[Team] " + ChatColor.DARK_AQUA + "*" + Var.teamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 				}
-				if (!(onTeam)) {
-					p.sendMessage(message);
+				if (chat == Var.enemyTeamDisplayName) {
+					message = Var.enemyTeamTechnicalColor + "[Team] " + ChatColor.DARK_AQUA + "*" + Var.enemyTeamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
+				}
+			} else {
+				if (chat == "spec") {
+					message = ChatColor.AQUA + "[Team] " + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
+				}
+				if (chat == Var.teamDisplayName) {
+					message = Var.teamTechnicalColor + "[Team] " + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
+				}
+				if (chat == Var.enemyTeamDisplayName) {
+					message = Var.enemyTeamTechnicalColor + "[Team] " + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 				}
 			}
-		}
-		if (chat == Var.teamDisplayName) {
-			for (Player p : Bukkit.getOnlinePlayers()) {
-				for (Object e : Scrimmage.team) {
-					String i = (String) e;
-					if (p.getDisplayName().equals(i)) {
+			if (chat == "spec") {
+				for (Player p : Bukkit.getOnlinePlayers()) {
+					boolean onTeam = false;
+					for (Object e : Scrimmage.team) {
+						String i = (String) e;
+						if (p.getDisplayName().equals(i)) {
+							onTeam = true;
+						}
+					}
+					for (Object e : Scrimmage.enemyTeam) {
+						String i = (String) e;
+						if (p.getDisplayName().equals(i)) {
+							onTeam = true;
+						}
+					}
+					if (!(onTeam)) {
 						p.sendMessage(message);
 					}
 				}
 			}
-		}
-		if (chat == Var.enemyTeamDisplayName) {
-			for (Player p : Bukkit.getOnlinePlayers()) {
-				for (Object e : Scrimmage.enemyTeam) {
-					String i = (String) e;
-					if (p.getDisplayName().equals(i)) {
-						p.sendMessage(message);
+			if (chat == Var.teamDisplayName) {
+				for (Player p : Bukkit.getOnlinePlayers()) {
+					for (Object e : Scrimmage.team) {
+						String i = (String) e;
+						if (p.getDisplayName().equals(i)) {
+							p.sendMessage(message);
+						}
+					}
+				}
+			}
+			if (chat == Var.enemyTeamDisplayName) {
+				for (Player p : Bukkit.getOnlinePlayers()) {
+					for (Object e : Scrimmage.enemyTeam) {
+						String i = (String) e;
+						if (p.getDisplayName().equals(i)) {
+							p.sendMessage(message);
+						}
 					}
 				}
 			}
@@ -931,17 +967,16 @@ public class MyEventListener implements Listener {
 	@SuppressWarnings("unused")
 	private static String credit = "Credit goes to Chronicals for the onServerListPing and onPlayerLogin methods";
 
-	@EventHandler
-	public void onServerListPing(ServerListPingEvent event) {
-		event.setMaxPlayers(30);
+	public void onServerListPing(ServerListPingEvent paramServerListPingEvent) {
+		paramServerListPingEvent.setMaxPlayers(64);
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
-	public void onPlayerLogin(PlayerLoginEvent event) {
-		if (Bukkit.getServer().getOnlinePlayers().length >= 30) {
-			event.disallow(PlayerLoginEvent.Result.KICK_FULL, "Server is full, you cannot log in!");
-		} else if (event.getResult().equals(PlayerLoginEvent.Result.KICK_FULL)) {
-			event.allow();
+	public void onPlayerLogin(PlayerLoginEvent paramPlayerLoginEvent) {
+		if (Bukkit.getServer().getOnlinePlayers().length >= 64) {
+			paramPlayerLoginEvent.disallow(PlayerLoginEvent.Result.KICK_FULL, "Server is full, you cannot log in!");
+		} else if (paramPlayerLoginEvent.getResult().equals(PlayerLoginEvent.Result.KICK_FULL)) {
+			paramPlayerLoginEvent.allow();
 		}
 	}
 
