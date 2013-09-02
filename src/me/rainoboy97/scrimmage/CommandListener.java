@@ -93,7 +93,7 @@ public class CommandListener implements CommandExecutor {
 					message = ChatColor.RESET + "<" + ChatColor.DARK_AQUA + "*" + Var.teamTechnicalColor + player.getDisplayName() + Chatcolor.RESET + ">" + ": " + sent;
 				}
 				if (chat == Var.enemyTeamDisplayName) {
-					message = ChatColor.RESET + "<" + ChatColor.DARK_AQUA + "*" + Var.enemyTeamtechincalColor + player.getDisplayName() + Chatcolor.RESET + ">" + ": " + sent;
+					message = ChatColor.RESET + "<" + ChatColor.DARK_AQUA + "*" + Var.enemyTeamTechincalColor + player.getDisplayName() + Chatcolor.RESET + ">" + ": " + sent;
 				}
 			} else {
 				if (chat == "spec") {
@@ -103,7 +103,7 @@ public class CommandListener implements CommandExecutor {
 					message = ChatColor.RESET + "<" + Var.teamTechnicalColor + player.getDisplayName() + Chatcolor.RESET + ">" + ": " + sent;
 				}
 				if (chat == Var.enemyTeamDisplayName) {
-					message = ChatColor.RESET + "<" + Var.enemyTeamtechincalColor + player.getDisplayName() + Chatcolor.RESET + ">" + ": " + sent;
+					message = ChatColor.RESET + "<" + Var.enemyTeamTechincalColor + player.getDisplayName() + Chatcolor.RESET + ">" + ": " + sent;
 				}
 			}
 			Bukkit.broadcastMessage(message);
