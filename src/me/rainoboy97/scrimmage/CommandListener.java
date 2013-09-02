@@ -85,6 +85,27 @@ public class CommandListener implements CommandExecutor {
 			sent = sent.trim();
 			String message = "";
 			String chat = Scrimmage.team(player);
+			if (player.isop().equals("true")) {
+				if (chat == "spec") {
+					message = ChatColor.AQUA + ChatColor.DARK_AQUA + "*" + ChatColor.AQUA + " [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+				}
+				if (chat == Var.teamDisplayName) {
+					message = Var.teamTechnicalColor + ChatColor.DARK_AQUA + "*" + Var.teamTechnicalColor + " [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+				}
+				if (chat == Var.enemyTeamDisplayName) {
+					message = Var.enemyTeamTechnicalColor + ChatColor.DARK_AQUA + "*" + Var.enemyTeamTechnicalColor + " [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+				}
+			} else {
+				if (chat == "spec") {
+					message = ChatColor.AQUA + "[G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+				}
+				if (chat == Var.teamDisplayName) {
+					message = Var.teamTechnicalColor + "[G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+				}
+				if (chat == Var.enemyTeamDisplayName) {
+					message = Var.enemyTeamtechnicalColor + "[G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+				}
+			}
 			Bukkit.broadcastMessage(message);
 		}
 		if (command.equalsIgnoreCase("join")) {
