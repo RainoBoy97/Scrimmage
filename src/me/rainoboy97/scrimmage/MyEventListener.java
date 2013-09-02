@@ -876,14 +876,14 @@ public class MyEventListener implements Listener {
 				chat = Var.enemyTeamDisplayName;
 			}
 		}
-		if (chat == "spec") {
-			message = ChatColor.AQUA + "[T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
-		}
-		if (chat == Var.teamDisplayName) {
-			message = Var.teamTechnicalColor + "[T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
-		}
-		if (chat == Var.enemyTeamDisplayName) {
-			message = Var.enemyTeamTechnicalColor + "[T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
+				if (chat == "spec") {
+					message = ChatColor.AQUA + "[Team] " + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
+				}
+				if (chat == Var.teamDisplayName) {
+					message = Var.teamTechnicalColor + "[Team] " + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
+				}
+				if (chat == Var.enemyTeamDisplayName) {
+					message = Var.enemyTeamTechnicalColor + "[Team] " + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 			/*
 			 * if (player.getDisplayName().equals("Barnyard_Owl")) { if (chat ==
 			 * "spec") { message = VariableHandler.enemyTeamTechnicalColor +
