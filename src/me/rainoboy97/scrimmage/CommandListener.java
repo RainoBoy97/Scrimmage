@@ -85,7 +85,7 @@ public class CommandListener implements CommandExecutor {
 			sent = sent.trim();
 			String message = "";
 			String chat = Scrimmage.team(player);
-			if (player.isop().equals("true")) {
+			if (player.isOp()) {
 				if (chat == "spec") {
 					message = ChatColor.RESET + "<" + ChatColor.DARK_AQUA + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.RESET + ">" + ": " + sent;
 				}
