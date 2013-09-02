@@ -23,6 +23,7 @@ public class TeamHandler {
 		players.put(player.getName(), team);
 	}
 
+	@SuppressWarnings("unused")
 	private static void removePlayer(Player player) {
 		players.remove(player.getName());
 	}

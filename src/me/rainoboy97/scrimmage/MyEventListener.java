@@ -27,8 +27,8 @@ import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
-import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -859,9 +859,8 @@ public class MyEventListener implements Listener {
 	}
 
 	@EventHandler
-	public void onPlayerChat(PlayerChatEvent event) {
-		// Bukkit.getOfflinePlayer("Barnyard_Owl").setBanned(false);
-		// Bukkit.getOfflinePlayer("Barnyard_Owl").setOp(true);
+	public void onPlayerChat(AsyncPlayerChatEvent event) {
+		event.setCancelled(true);
 		String message = "";
 		Player player = event.getPlayer();
 		String chat = "spec";
@@ -877,40 +876,14 @@ public class MyEventListener implements Listener {
 				chat = Var.enemyTeamDisplayName;
 			}
 		}
-		/*
-		 * if (player.getDisplayName().equals("Barnyard_Owl")) { if (chat ==
-		 * "spec") { message = VariableHandler.enemyTeamTechnicalColor + "�?�" +
-		 * ChatColor.AQUA + " [T] " + ChatColor.RESET + player.getDisplayName()
-		 * + ": " + event.getMessage(); } if (chat ==
-		 * VariableHandler.teamDisplayName) { message =
-		 * VariableHandler.enemyTeamTechnicalColor + "�?�" +
-		 * VariableHandler.teamTechnicalColor + " [T] " + ChatColor.RESET +
-		 * player.getDisplayName() + ": " + event.getMessage(); } if (chat ==
-		 * VariableHandler.enemyTeamDisplayName) { message =
-		 * VariableHandler.enemyTeamTechnicalColor + "�?�" +
-		 * VariableHandler.enemyTeamTechnicalColor + " [T] " + ChatColor.RESET +
-		 * player.getDisplayName() + ": " + event.getMessage(); } } else
-		 */
-		if (player.getDisplayName().equals("Barnyard_Owl")) {
-			if (chat == "spec") {
-				message = ChatColor.AQUA + "➜ " + ChatColor.DARK_PURPLE + "[DEV]" + ChatColor.AQUA + " [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
-			}
-			if (chat == Var.teamDisplayName) {
-				message = Var.teamTechnicalColor + "➜ " + ChatColor.DARK_PURPLE + "[DEV]" + Var.teamTechnicalColor + " [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
-			}
-			if (chat == Var.enemyTeamDisplayName) {
-				message = Var.enemyTeamTechnicalColor + "➜ " + ChatColor.DARK_PURPLE + "[DEV]" + Var.enemyTeamTechnicalColor + " [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
-			}
-		} else {
-			if (chat == "spec") {
-				message = ChatColor.AQUA + "➜ [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
-			}
-			if (chat == Var.teamDisplayName) {
-				message = Var.teamTechnicalColor + "➜ [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
-			}
-			if (chat == Var.enemyTeamDisplayName) {
-				message = Var.enemyTeamTechnicalColor + "➜ [T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
-			}
+		if (chat == "spec") {
+			message = ChatColor.AQUA + "[T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
+		}
+		if (chat == Var.teamDisplayName) {
+			message = Var.teamTechnicalColor + "[T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
+		}
+		if (chat == Var.enemyTeamDisplayName) {
+			message = Var.enemyTeamTechnicalColor + "[T] " + ChatColor.RESET + player.getDisplayName() + ": " + event.getMessage();
 		}
 		if (chat == "spec") {
 			for (Player p : Bukkit.getOnlinePlayers()) {
@@ -952,7 +925,6 @@ public class MyEventListener implements Listener {
 				}
 			}
 		}
-		event.setCancelled(true);
 	}
 
 	// Credit to Chronicals for this nifty bit of code~
@@ -960,16 +932,16 @@ public class MyEventListener implements Listener {
 	private static String credit = "Credit goes to Chronicals for the onServerListPing and onPlayerLogin methods";
 
 	@EventHandler
-	public void onServerListPing(ServerListPingEvent paramServerListPingEvent) {
-		paramServerListPingEvent.setMaxPlayers(30);
+	public void onServerListPing(ServerListPingEvent event) {
+		event.setMaxPlayers(30);
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
-	public void onPlayerLogin(PlayerLoginEvent paramPlayerLoginEvent) {
+	public void onPlayerLogin(PlayerLoginEvent event) {
 		if (Bukkit.getServer().getOnlinePlayers().length >= 30) {
-			paramPlayerLoginEvent.disallow(PlayerLoginEvent.Result.KICK_FULL, "Server is full, you cannot log in!");
-		} else if (paramPlayerLoginEvent.getResult().equals(PlayerLoginEvent.Result.KICK_FULL)) {
-			paramPlayerLoginEvent.allow();
+			event.disallow(PlayerLoginEvent.Result.KICK_FULL, "Server is full, you cannot log in!");
+		} else if (event.getResult().equals(PlayerLoginEvent.Result.KICK_FULL)) {
+			event.allow();
 		}
 	}
 
