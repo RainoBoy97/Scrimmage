@@ -961,12 +961,12 @@ public class MyEventListener implements Listener {
 
 	@EventHandler
 	public void onServerListPing(ServerListPingEvent paramServerListPingEvent) {
-		paramServerListPingEvent.setMaxPlayers(30);
+		paramServerListPingEvent.setMaxPlayers(64);
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerLogin(PlayerLoginEvent paramPlayerLoginEvent) {
-		if (Bukkit.getServer().getOnlinePlayers().length >= 30) {
+		if (Bukkit.getServer().getOnlinePlayers().length >= 64) {
 			paramPlayerLoginEvent.disallow(PlayerLoginEvent.Result.KICK_FULL, "Server is full, you cannot log in!");
 		} else if (paramPlayerLoginEvent.getResult().equals(PlayerLoginEvent.Result.KICK_FULL)) {
 			paramPlayerLoginEvent.allow();
