@@ -37,8 +37,12 @@ public class Start implements Runnable {
 			} else if (count >= 5) {
 				Start start = new Start(plugin, count - 1);
 				Bukkit.getServer().getScheduler().runTaskLater(plugin, start, 20L);
+			} else if (count <= 10 && count >= 6) {
+				Bukkit.broadcastMessage(ChatColor.YELLOW + "The match will begin in " + ChatColor.DARK_RED + count + ChatColor.YELLOW + " seconds.");
+				Start start = new Start(plugin, count - 1);
+				Bukkit.getServer().getScheduler().runTaskLater(plugin, start, 20L);
 			} else if (count <= 5 && count >= 2) {
-				Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "The match will begin in " + ChatColor.DARK_RED + count + ChatColor.GREEN + " seconds.");
+				Bukkit.broadcastMessage(ChatColor.RED + "The match will begin in " + ChatColor.DARK_RED + count + ChatColor.RED + " seconds.");
 				Start start = new Start(plugin, count - 1);
 				Bukkit.getServer().getScheduler().runTaskLater(plugin, start, 20L);
 			} else if (count == 1) {
