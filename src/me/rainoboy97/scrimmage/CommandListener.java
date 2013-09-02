@@ -87,23 +87,23 @@ public class CommandListener implements CommandExecutor {
 			String chat = Scrimmage.team(player);
 			if (player.isop().equals("true")) {
 				if (chat == "spec") {
-					message = ChatColor.AQUA + ChatColor.DARK_AQUA + "*" + ChatColor.AQUA + " [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+					message = ChatColor.RESET + "<" + ChatColor.DARK_AQUA + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.RESET + ">" + ": " + sent;
 				}
 				if (chat == Var.teamDisplayName) {
-					message = Var.teamTechnicalColor + ChatColor.DARK_AQUA + "*" + Var.teamTechnicalColor + " [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+					message = ChatColor.RESET + "<" + ChatColor.DARK_AQUA + "*" + Var.teamTechnicalColor + player.getDisplayName() + Chatcolor.RESET + ">" + ": " + sent;
 				}
 				if (chat == Var.enemyTeamDisplayName) {
-					message = Var.enemyTeamTechnicalColor + ChatColor.DARK_AQUA + "*" + Var.enemyTeamTechnicalColor + " [G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+					message = ChatColor.RESET + "<" + ChatColor.DARK_AQUA + "*" + Var.enemyTeamtechincalColor + player.getDisplayName() + Chatcolor.RESET + ">" + ": " + sent;
 				}
 			} else {
 				if (chat == "spec") {
-					message = ChatColor.AQUA + "[G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+					message = ChatColor.RESET + "<" + ChatColor.AQUA + player.getDisplayName() + ChatColor.RESET + ">" + ": " + sent;
 				}
 				if (chat == Var.teamDisplayName) {
-					message = Var.teamTechnicalColor + "[G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+					message = ChatColor.RESET + "<" + Var.teamTechnicalColor + player.getDisplayName() + Chatcolor.RESET + ">" + ": " + sent;
 				}
 				if (chat == Var.enemyTeamDisplayName) {
-					message = Var.enemyTeamtechnicalColor + "[G] " + ChatColor.RESET + player.getDisplayName() + ": " + sent;
+					message = ChatColor.RESET + "<" + Var.enemyTeamtechincalColor + player.getDisplayName() + Chatcolor.RESET + ">" + ": " + sent;
 				}
 			}
 			Bukkit.broadcastMessage(message);
