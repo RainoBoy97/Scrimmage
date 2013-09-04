@@ -606,31 +606,23 @@ public class MyEventListener implements Listener {
 	@EventHandler
 	public void onInvClick(InventoryClickEvent event) {
 		HumanEntity player = event.getWhoClicked();
-		if (player.getGameMode() == GameMode.CREATIVE && !(player.isOp())) {
+		if (player.getGameMode() == GameMode.CREATIVE) {
 			event.setCancelled(true);
-		} else {
-			event.setCancelled(false);
-		}
 	}
 
 	@EventHandler
 	public void onItemDrop(PlayerDropItemEvent event) {
 		Player player = event.getPlayer();
-		if (player.getGameMode() == GameMode.CREATIVE && !(player.isOp())) {
+		if (player.getGameMode() == GameMode.CREATIVE) {
 			event.setCancelled(true);
-		} else {
-			event.setCancelled(false);
 		}
 	}
 
 	@EventHandler
 	public void onItemPickup(PlayerPickupItemEvent event) {
 		Player player = event.getPlayer();
-		if (player.getGameMode() == GameMode.CREATIVE && !(player.isOp())) {
+		if (player.getGameMode() == GameMode.CREATIVE) {
 			event.setCancelled(true);
-		} else {
-			event.setCancelled(false);
-		}
 	}
 
 	@EventHandler
@@ -839,8 +831,7 @@ public class MyEventListener implements Listener {
 				}
 			}
 		}
-		if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
-		} else if (player.getGameMode().equals(GameMode.CREATIVE) && !(player.isOp())) {
+		if (event.getAction().equals(Action.LEFT_CLICK_BLOCK) && event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
 			event.setCancelled(true);
 		}
 		if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
