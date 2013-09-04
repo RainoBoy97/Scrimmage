@@ -515,15 +515,18 @@ public class Scrimmage extends JavaPlugin {
 
 		blue.setAllowFriendlyFire(false);
 		blue.setCanSeeFriendlyInvisibles(false);
-		blue.setPrefix(Var.teamTechnicalColor + "[Team]" + Var.teamTechnicalColor);
-
+		blue.setPrefix(Var.teamTechnicalColor + "");
+		blue.setSuffix(ChatColor.GRAY + "");
+		
 		red.setAllowFriendlyFire(false);
 		red.setCanSeeFriendlyInvisibles(false);
-		red.setPrefix(Var.enemyTeamTechnicalColor + "[Team]" + Var.enemyTeamTechnicalColor);
-
+		red.setPrefix(Var.enemyTeamTechnicalColor + "");
+		red.setSuffix(ChatColor.GRAY + "");
+		
 		spec.setAllowFriendlyFire(false);
 		spec.setCanSeeFriendlyInvisibles(true);
-		spec.setPrefix(ChatColor.AQUA + "[Team]" + ChatColor.AQUA);
+		spec.setPrefix(ChatColor.AQUA +"");
+		spec.setSuffix(ChatColor.GRAY + "");
 		// Teleport all players to obs spawn and clear the inv. (Assuming
 		// reload)
 		for (Player player : Bukkit.getOnlinePlayers()) {
