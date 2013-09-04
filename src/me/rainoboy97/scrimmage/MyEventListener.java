@@ -908,13 +908,13 @@ public class MyEventListener implements Listener {
 			 */
 			if (player.isOp()) {
 				if (chat == "spec") {
-					message = ChatColor.AQUA + "[Team] " + ChatColor.DARK_AQUA + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
+					message = ChatColor.AQUA + "[Team] " + ChatColor.GREEN + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 				}
 				if (chat == Var.teamDisplayName) {
-					message = Var.teamTechnicalColor + "[Team] " + ChatColor.DARK_AQUA + "*" + Var.teamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
+					message = Var.teamTechnicalColor + "[Team] " + ChatColor.GREEN + "*" + Var.teamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 				}
 				if (chat == Var.enemyTeamDisplayName) {
-					message = Var.enemyTeamTechnicalColor + "[Team] " + ChatColor.DARK_AQUA + "*" + Var.enemyTeamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
+					message = Var.enemyTeamTechnicalColor + "[Team] " + ChatColor.GREEN + "*" + Var.enemyTeamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ": " + event.getMessage();
 				}
 			} else {
 				if (chat == "spec") {
