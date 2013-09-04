@@ -40,7 +40,6 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.event.weather.LightningStrikeEvent;
 import org.bukkit.event.weather.ThunderChangeEvent;
-import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.event.world.StructureGrowEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -105,7 +104,11 @@ public class MyEventListener implements Listener {
 				Scrimmage.enemyTeam.remove(player.getDisplayName());
 			}
 		}
-		Bukkit.broadcastMessage(ChatColor.AQUA + "Player " + ChatColor.DARK_AQUA + displayName + ChatColor.AQUA + " has joined the server.");
+		if (player.isOp()) {
+		Bukkit.broadcastMessage(ChatColor.GREEN + "*" + ChatColor.AQUA + displayName + ChatColor.YELLOW + " joined the server");
+		}else{
+		Bukkit.broadcastMessage(ChatColor.AQUA + displayName + ChatColor.YELLOW + " joined the server");
+		}
 		player.sendMessage(ChatColor.GRAY + "Welcome!! This server is currently running Scrimmage with the map " + Var.mapName + ". (Made by " + Var.mapMakers + ") and config courtesy of " + Var.configMaker + ".");
 
 	}
@@ -115,7 +118,11 @@ public class MyEventListener implements Listener {
 		event.setQuitMessage(null);
 		Player player = event.getPlayer();
 		String displayName = player.getDisplayName();
-		Bukkit.broadcastMessage(ChatColor.AQUA + "Player " + ChatColor.DARK_AQUA + displayName + ChatColor.AQUA + " has left the server.");
+		if (player.isOp()) {
+		Bukkit.broadcastMessage(ChatColor.GREEN + "*" + ChatColor.AQUA + displayName + ChatColor.YELLOW + " left the server");
+		}else{
+		Bukkit.broadcastMessage(ChatColor.AQUA + displayName + ChatColor.YELLOW + " left the server");
+		}
 
 		// if (!(player.getGameMode() == GameMode.CREATIVE && player.isOp())) {
 		// Bukkit.broadcastMessage(VariableHandler.enemyTeamTechnicalColor + ""
