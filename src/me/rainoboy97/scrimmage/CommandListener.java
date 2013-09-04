@@ -40,13 +40,16 @@ public class CommandListener implements CommandExecutor {
 					Scrimmage.starting = true;
 					Start start = new Start(plugin, Integer.parseInt(arg));
 					Bukkit.getServer().getScheduler().runTaskLater(plugin, start, 0L);
+					Bukkit.broadcastMessage(ChatColor.GREEN + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.GREEN + " started " + ChatColor.GRAY + "the countdown");
 				} else if (args.length == 2) {
 					Start start = new Start(plugin, 30);
 					Bukkit.getServer().getScheduler().runTaskLater(plugin, start, 0L);
+					Bukkit.broadcastMessage(ChatColor.GREEN + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.GREEN + " started " + ChatColor.GRAY + "the countdown");
 				} else {
 					Scrimmage.starting = true;
 					Start start = new Start(plugin, 15);
 					Bukkit.getServer().getScheduler().runTaskLater(plugin, start, 0L);
+					Bukkit.broadcastMessage(ChatColor.GREEN + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.GREEN + " started " + ChatColor.GRAY + "the countdown");
 				}
 			} catch (Exception e) {
 				player.sendMessage(ChatColor.RED + "An error occurred while performing the command, check your arguments!");
@@ -54,7 +57,11 @@ public class CommandListener implements CommandExecutor {
 		}
 		if (command.equalsIgnoreCase("cancel") && player.isOp()) {
 			if (args.length == 0) {
-				Bukkit.broadcastMessage(ChatColor.RED + "Canceled game or startup.");
+				if (player.isOp()){
+					Bukkit.broadcastMessage(ChatColor.GREEN + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.RED + " canceled " + ChatColor.GRAY + "the game or countdown.");
+					}else{
+					Bukkit.broadcastMessage(ChatColor.GREEN + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.RED + " canceled " + ChatColor.GRAY + "the game or countdown.");
+					}
 				Scrimmage.starting = false;
 				Scrimmage.gameActive = false;
 				for (Player i : Bukkit.getOnlinePlayers()) {
@@ -85,13 +92,13 @@ public class CommandListener implements CommandExecutor {
 			String chat = Scrimmage.team(player);
 			if (player.isOp()) {
 				if (chat == "spec") {
-					message = ChatColor.RESET + "<" + ChatColor.DARK_AQUA + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.RESET + ">" + ": " + sent;
+					message = ChatColor.RESET + "<" + ChatColor.GREEN + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.RESET + ">" + ": " + sent;
 				}
 				if (chat == Var.teamDisplayName) {
-					message = ChatColor.RESET + "<" + ChatColor.DARK_AQUA + "*" + Var.teamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ">" + ": " + sent;
+					message = ChatColor.RESET + "<" + ChatColor.GREEN + "*" + Var.teamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ">" + ": " + sent;
 				}
 				if (chat == Var.enemyTeamDisplayName) {
-					message = ChatColor.RESET + "<" + ChatColor.DARK_AQUA + "*" + Var.enemyTeamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ">" + ": " + sent;
+					message = ChatColor.RESET + "<" + ChatColor.GREEN + "*" + Var.enemyTeamTechnicalColor + player.getDisplayName() + ChatColor.RESET + ">" + ": " + sent;
 				}
 			} else {
 				if (chat == "spec") {
@@ -141,7 +148,11 @@ public class CommandListener implements CommandExecutor {
 						loc = Var.observerSpawn;
 						player.teleport(loc);
 					}
-					player.sendMessage(ChatColor.AQUA + "Joined observers successfully.");
+					if (player.isOp()){
+						Bukkit.broadcastMessage(ChatColor.GREEN + "*" + ChatColor.AQUA + player.getDisplayName() + ChatColor.GRAY + " joined OBSERVERS.");
+						}else{
+						Bukkit.broadcastMessage(ChatColor.AQUA + player.getDisplayName() + ChatColor.GRAY + " joined OBSERVERS.");
+						}
 				} else if (Var.teamDisplayName.startsWith(arg)) {
 					if (Scrimmage.team.contains(player.getDisplayName())) {
 						Scrimmage.team.remove(player.getDisplayName());
@@ -203,7 +214,11 @@ public class CommandListener implements CommandExecutor {
 						RespawnPlayer respawnPlayer = new RespawnPlayer(plugin, player, loc);
 						Bukkit.getServer().getScheduler().runTaskLater(plugin, respawnPlayer, 1L);
 					}
-					player.sendMessage(Var.teamTechnicalColor + "Joined " + Var.teamDisplayName + " successfully.");
+					if (player.isOp()){
+						Bukkit.broadcastMessage(ChatColor.GREEN + "*" + Var.teamTechnicalColor + player.getDisplayName() + ChatColor.GRAY + " joined " + Var.teamDisplayName + ".");
+						}else{
+						Bukkit.broadcastMessage(Var.teamTechnicalColor + player.getDisplayName() + ChatColor.GRAY + " joined " + Var.teamDisplayName + ".");
+						}
 
 				} else if (Var.enemyTeamDisplayName.startsWith(arg)) {
 					if (Scrimmage.team.contains(player.getDisplayName())) {
@@ -266,7 +281,11 @@ public class CommandListener implements CommandExecutor {
 						RespawnPlayer respawnPlayer = new RespawnPlayer(plugin, player, loc);
 						Bukkit.getServer().getScheduler().runTaskLater(plugin, respawnPlayer, 1L);
 					}
-					player.sendMessage(Var.enemyTeamTechnicalColor + "Joined " + Var.enemyTeamDisplayName + " successfully.");
+					if (player.isOp()){
+					Bukkit.broadcastMessage(ChatColor.GREEN + "*" + Var.enemyTeamTechnicalColor + player.getDisplayName() + ChatColor.GRAY + " joined " + Var.enemyTeamDisplayName + ".");
+					}else{
+					Bukkit.broadcastMessage(Var.enemyTeamTechnicalColor + player.getDisplayName() + ChatColor.GRAY + " joined " + Var.enemyTeamDisplayName + ".");
+					}
 				}
 			}
 		}
