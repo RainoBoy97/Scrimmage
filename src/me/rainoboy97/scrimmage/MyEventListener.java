@@ -40,6 +40,7 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.event.weather.LightningStrikeEvent;
 import org.bukkit.event.weather.ThunderChangeEvent;
+import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.event.world.StructureGrowEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -609,6 +610,7 @@ public class MyEventListener implements Listener {
 		if (player.getGameMode() == GameMode.CREATIVE) {
 			event.setCancelled(true);
 	}
+    }
 
 	@EventHandler
 	public void onItemDrop(PlayerDropItemEvent event) {
@@ -623,7 +625,7 @@ public class MyEventListener implements Listener {
 		Player player = event.getPlayer();
 		if (player.getGameMode() == GameMode.CREATIVE) {
 			event.setCancelled(true);
-	}
+	} }
 
 	@EventHandler
 	public void onWorldChange(PlayerChangedWorldEvent event) {
@@ -834,6 +836,12 @@ public class MyEventListener implements Listener {
 		if (event.getAction().equals(Action.LEFT_CLICK_BLOCK) && event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
 			event.setCancelled(true);
 		}
+        if (event.getAction().equals(Action.PHYSICAL) && event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
+            event.setCancelled(true);
+        }
+        if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
+            event.setCancelled(true);
+        }
 		if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 			if (event.getMaterial().getId() == 111) {
 				if (event.getPlayer().getGameMode() == GameMode.CREATIVE && event.getClickedBlock().getTypeId() == 111) {
